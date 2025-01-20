@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UserPreference {
+  id          String   @id @default(cuid())
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Basic Info
+  firstName   String
+  lastName    String
+  email       String
+  phone       String
+  
+  // Search Preferences
+  listingType   String   // 'rent' or 'shared'
+  location      String
+  propertyType  String  // 'house', 'apartment', 'studio', 'flat'
+  priceRange    Int
+  minBedrooms   Int?    // Add back bedroom preferences
+  maxBedrooms   Int?
+  
+  // Additional Details
+  rentDetails   Json?   // For future extensibility
+  sharedDetails Json?   // For future extensibility
+  
+  // Common Fields
+  message     String  @db.Text
+  endDate     DateTime
+
+  // Relations
+  applications PropertyApplication[]
+
+  @@map("user_preferences")
+}
+
+model PropertyApplication {
+  id                String         @id @default(uuid())
+  propertyReference String         // Reference from Daft.ie
+  userPreference    UserPreference @relation(fields: [preferenceId], references: [id])
+  preferenceId      String
+  appliedAt         DateTime       @default(now())
+
+  @@unique([propertyReference, preferenceId])
+}

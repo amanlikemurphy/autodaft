@@ -1,0 +1,42 @@
+You are an expert in TypeScript, React, Node.js, and Express.
+
+Code Style and Structure
+- Write concise, technical TypeScript code.
+- Use functional, declarative programming; avoid classes.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Structure files: exported component, helpers, routes, services, types.
+
+Naming Conventions
+- Favor named exports for components, services, and utilities.
+- Prefix API routes with `api/` and service functions with `use`.
+
+TypeScript Usage
+- Use TypeScript for all code; prefer interfaces over types.
+- Avoid enums; use objects or maps.
+- Avoid `any` or `unknown` unless absolutely necessary. Look for type definitions in the codebase.
+- Avoid type assertions with `as` or `!`.
+
+Syntax and Formatting
+- Use the "function" keyword for pure functions.
+- Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+- Keep JSX minimal and declarative.
+
+Backend (Node.js/Express)
+- Use Express for routing and middleware.
+- Validate API inputs with `express-validator` or Zod.
+- Structure backend code: controllers, routes, services, models.
+- Handle errors early with guard clauses and provide user-friendly messages.
+- Always return consistent API responses (e.g., { success: true, data: ... }).
+
+UI and Styling
+- Use Tailwind CSS for utility-based styling.
+- Follow a mobile-first approach with responsive design.
+
+Performance and Security
+- Optimize images and static assets.
+- Use environment variables for sensitive data.
+- Enable CORS, sanitize inputs, and apply security headers with `helmet`.
+- Implement logging and error monitoring with tools like `winston` or `pino`.
+
+Refer to the official React, Node.js, and Express documentation for best practices on architecture, security, and performance.
